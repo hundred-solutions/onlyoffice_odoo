@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="onlyoffice_template.TemplateEditor" owl="1">
+        <html>
+            <head>
+                <meta charset="UTF-8" />
+                <title>
+                    ONLYOFFICE
+                </title>
+                <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+                <style>
+                    html, body {
+                        height: 100%;
+                    }
+                </style>
+            </head>
+            <body class="o-onlyoffice-template">
+                <div class="o-onlyoffice-template-panel">
+                    <div class="o-onlyoffice-panel-header">
+                        <span>Fields</span>
+                    </div>
+                    <hr/>
+                    <div class="o-onlyoffice-panel-body">
+                        <div class="o-onlyoffice-body-title">
+                            <span>
+                                Choose the field below to paste selected parameter to the cursor
+                            </span>
+                        </div>
+                        <div class="o-onlyoffice-body-search">
+                            <div class="o-onlyoffice-search-title">
+                                <span>
+                                    Module/ section
+                                </span>
+                            </div>
+                            <div class="o-onlyoffice-search-field">
+                                <input type="text" placeholder="Search field" t-model="state.searchString" t-on-input="onSearchInput"/>
+                                <button t-if="state.searchString" t-on-click="onCleanSearchClick">
+                                    <img src="/onlyoffice_template/static/svg/onlyoffice_clean_search_field.svg"/>
+                                </button>
+                                <button t-if="!state.searchString">
+                                    <img src="/onlyoffice_template/static/svg/onlyoffice_search.svg"/>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="o-onlyoffice-body-models">
+                            <t t-foreach="state.visibleModels" t-as="model" t-key="model.name">
+                                <t t-component="EditorComponent" model="model" searchString="state.searchString" level="0"/>
+                                <hr/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div id="doceditor"/>
+                <div id="error" class="w-25 m-auto my-5 py-5 d-flex flex-column d-none">
+                    <img src="/onlyoffice_template/static/svg/onlyoffice_logo.svg" alt="ONLYOFFICE logo"/>
+                    <div class="my-3 alert alert-danger">
+                        <p>
+                            ONLYOFFICE cannot be reached. Please contact admin.
+                        </p>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </t>
+</templates>

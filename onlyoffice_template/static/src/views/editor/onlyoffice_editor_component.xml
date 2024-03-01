@@ -1,0 +1,23 @@
+<t t-name="onlyoffice_template.EditorComponent" owl="1">
+    <div class="o-onlyoffice-models-list" t-att-class="state.isExpanded ? 'o-onlyoffice-models-list_open' : null">
+        <div class="o-onlyoffice-model" t-att-style="'padding-left:' + (props.level * 20) + 'px;'">
+            <button t-on-click="toggleExpand" class="o-onlyoffice-model-button" t-att-class="state.isExpanded ? 'o-onlyoffice-model-button_open' : null">
+                <t t-esc="props.model.name"/>
+            </button>
+        </div>
+        <div t-if="state.isExpanded" class="o-onlyoffice-fields-list">
+            <t t-if="props.model.children">
+                <t t-foreach="props.model.children" t-as="child" t-key="child.name">
+                    <EditorComponent model="child" searchString="props.searchString" level="props.level + 1"/>
+                </t>
+            </t>
+            <t t-if="props.model.fields">
+                <div t-foreach="props.model.fields" t-as="field" t-key="field.name" t-on-click="() => this.onFieldClick(field)" class="o-onlyoffice-field" t-att-title="field.string + ' ' + field.name">
+                    <t t-esc="field.string"/>
+                    <br/>
+                    <t t-esc="field.name.substring(field.name.indexOf('_') + 1)"/>
+                </div>
+            </t>
+        </div>
+    </div>
+</t>
