@@ -1,4 +1,3 @@
-
 /** @odoo-module **/
 import { CANCEL_GLOBAL_CLICK, KanbanRecord } from "@web/views/kanban/kanban_record";
 import { ConfirmationDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
@@ -8,7 +7,6 @@ export class OnlyofficeKanbanRecord extends KanbanRecord {
     setup() {
         super.setup();
         this.orm = useService("orm");
-        this.rpc = useService("rpc");
         this.actionService = useService("action");
     }
 

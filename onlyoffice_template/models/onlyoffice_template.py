@@ -1,9 +1,10 @@
-from odoo import api, models, fields
-from odoo.exceptions import UserError
+import base64
+import copy
 import json
 import re
-import base64
 
+from odoo import api, fields, models
+from odoo.exceptions import UserError
 from odoo.addons.onlyoffice_odoo.utils import file_utils
 
 class OnlyOfficeTemplate(models.Model):
@@ -49,31 +50,62 @@ class OnlyOfficeTemplate(models.Model):
     @api.model
     def get_fields_for_model(self, model_name):
         processed_models = set()
-        models_info_list = []
+        cached_models = {}
 
-        def process_model(name):
-            if name in processed_models:
+        def process_model(model_name):
+            if model_name in processed_models:
                 return
-            processed_models.add(name)
+            processed_models.add(model_name)
+            
+            description = self.env["ir.model"].search_read([["model", "=", model_name]], ["name"])
+            fields = self.env[model_name].fields_get()
 
-            fullname = self.env["ir.model"].search_read([["model", "=", name]], ["name"])
-            model_info = {"name": name, "fullname": fullname, "fields": []}
-            fields_info = self.env[name].fields_get()
-
-            for field_name, field_props in fields_info.items():
+            field_list = []
+            for field_name, field_props in fields.items():
                 field_type = field_props["type"]
-                field_detail = {
-                    "name": name + "_" + field_name,
+                if field_type in ["html", "binary", "json"]:
+                    continue #TODO:
+                
+                field_dict = {
+                    "name": field_name,
                     "string": field_props.get("string", ""),
-                    "type": field_type,
+                    "type": field_props["type"],
                 }
-                model_info["fields"].append(field_detail)
 
-                if field_type == "one2many":
-                    related_model_name = field_props["relation"]
-                    process_model(related_model_name)
+                if field_type in ["one2many", "many2many", "many2one"]:
+                    related_model = field_props["relation"]
+                    if cached_models.get(related_model):
+                        field_dict["related_model"] = copy.deepcopy(cached_models[related_model])
+                        field_dict["related_model"]["name"] = field_name
+                    else:
+                        if field_type == "many2one":
+                            related_description = self.env["ir.model"].search_read([["model", "=", related_model]], ["name"])
+                            related_fields = self.env[related_model].fields_get()
 
-            models_info_list.append(model_info)
+                            related_field_list = []
+                            for related_field_name, related_field_props in related_fields.items():
+                                related_field_dict = {
+                                    "name": related_field_name,
+                                    "string": related_field_props.get("string", ""),
+                                    "type": related_field_props["type"],
+                                }
+                                related_field_list.append(related_field_dict)
+                            related_model_info = {"name": field_name, "description": related_description[0]["name"], "fields": related_field_list}
+                            field_dict["related_model"] = related_model_info
+                            cached_models[related_model] = related_model_info
+                        else:
+                            processed_model = process_model(related_model)
+                            if processed_model:
+                                field_dict["related_model"] = processed_model
+                                cached_models[related_model] = processed_model
+                
+                field_list.append(field_dict)
+            
+            model_info = {"name": model_name, "description": description[0]["name"], "fields": field_list}
 
-        process_model(model_name)
-        return json.dumps(models_info_list, ensure_ascii=False)
+            processed_models.discard(model_name)
+            return model_info
+
+        models_info = process_model(model_name)
+        data = json.dumps(models_info, ensure_ascii=False)
+        return data

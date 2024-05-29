@@ -3,6 +3,8 @@
         <div class="o-onlyoffice-model" t-att-style="'padding-left:' + (props.level * 20) + 'px;'">
             <button t-on-click="toggleExpand" class="o-onlyoffice-model-button" t-att-class="state.isExpanded ? 'o-onlyoffice-model-button_open' : null">
                 <t t-esc="props.model.name"/>
+                <br/>
+                <t t-if="props.model.description" t-esc="props.model.description"/>
             </button>
         </div>
         <div t-if="state.isExpanded" class="o-onlyoffice-fields-list">
@@ -12,11 +14,18 @@
                 </t>
             </t>
             <t t-if="props.model.fields">
-                <div t-foreach="props.model.fields" t-as="field" t-key="field.name" t-on-click="() => this.onFieldClick(field)" class="o-onlyoffice-field" t-att-title="field.string + ' ' + field.name">
-                    <t t-esc="field.string"/>
-                    <br/>
-                    <t t-esc="field.name.substring(field.name.indexOf('_') + 1)"/>
-                </div>
+                <t t-foreach="props.model.fields" t-as="field" t-key="field.name">
+                    <t t-if="field.related_model">
+                        <EditorComponent model="field.related_model" searchString="props.searchString" level="props.level + 1"/>
+                    </t>
+                    <t t-else="">
+                        <div t-on-click="() => this.onFieldClick(field)" class="o-onlyoffice-field">
+                            <t t-esc="field.string"/>
+                            <br/>
+                            <t t-esc="field.name"/>
+                        </div>
+                    </t>
+                </t>
             </t>
         </div>
     </div>

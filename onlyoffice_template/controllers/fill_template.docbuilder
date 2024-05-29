@@ -12,30 +12,65 @@ oDocumentElements.forEach(oElement => {
 })
 
 
-function getFormDataByModel(key) {
-    for (var i = 0; i < array_values.length; i++) {
-        if (array_values[i][key]) {
-            return array_values[i][key];
-        }
-    }
-    return [];
+function getData(keyPath, index = 0, obj = fields) {
+  const keys = keyPath.split(' ');
+
+  // Recursive function to traverse the object and get the desired value(s)
+  function traverse(obj, keys) {
+      if (keys.length === 0) return obj;
+
+      let key = keys[0];
+      let remainingKeys = keys.slice(1);
+
+      if (Array.isArray(obj)) {
+          return obj.map(item => traverse(item, [key, ...remainingKeys]));
+      } else {
+    if (typeof obj[key] === 'undefined') {
+        return ""
+          }
+          return traverse(obj[key], remainingKeys);
+      }
+  }
+
+  // Get the value(s) from the object based on the keys
+  let values = traverse(obj, keys);
+
+  if (typeof values[index] === 'undefined') {
+    return ""
+  }
+  
+  if (Array.isArray(values[0])) {
+      // If the first element is an array, return a concatenated string of all values by key
+      return values[index].flat().join(' ');
+  } else if (Array.isArray(values) && typeof values[index] !== 'object') {
+      // If values are an array, return the value at the specified index
+      return values[index];
+  } else {
+      // If the value is not an array, return it as is
+      return values;
+  }
 }
 
-function getModelInfo(oFormKey) {
-    var modelKey = oFormKey.split("_");
-    var modelName = modelKey.shift();
-    modelKey = modelKey.join("_");
-    return {
-        modelKey: modelKey,
-        modelName: modelName
-    };
+function getDataArrayLength(keyPath, obj = fields) {
+    const keys = keyPath.split(' ');
+    let currentObj = obj;
+    for (let key of keys) {
+        if (typeof currentObj === 'undefined') {
+            return 0;
+        }
+        if (Array.isArray(currentObj)) {
+            return currentObj.length;
+        }
+        currentObj = currentObj[key];
+    }
+  return 0;
 }
 
 function fillElementByType(oElement) {
     var oElementClassType = oElement.GetClassType();
 
     if (oElementClassType === "paragraph") {
-        if (oElement.GetNumbering()) {
+        if (oElement.GetNumbering()) {    
             fillNumbering(oElement);
         } else {
             fillParagraph(oElement);
@@ -59,7 +94,6 @@ function fillParagraph(oParagraph) {
 }
 
 function fillNumbering(oParagraph) {
-    var numberingData = {};
     var requiredLevel = 0;
 
     var oParagraphElementsCount = oParagraph.GetElementsCount();
@@ -70,14 +104,11 @@ function fillNumbering(oParagraph) {
         if (oElementClassType === "form") {
             var oForm = oElement;
             var oFormKey = oForm.GetFormKey();
-            var modelInfo = getModelInfo(oForm.GetFormKey());
 
-            var records = getFormDataByModel(modelInfo.modelName);
-            if (records && records.length) {
-                numberingData[modelInfo.modelName] = records;
-                requiredLevel = Math.max(requiredLevel, records.length);
-            }
-            fillForm(oForm, records[0]?.[modelInfo.modelKey]);
+            var data = getData(oFormKey, 0);
+            var length = getDataArrayLength(oFormKey)
+            requiredLevel = Math.max(requiredLevel, length);
+            fillForm(oForm, data);
         }
     }
 
@@ -98,13 +129,10 @@ function fillNumbering(oParagraph) {
                 if (oElementClassType === "form") {
                     var oForm = oElement;
                     var oFormKey = oForm.GetFormKey();
-                    var modelInfo = getModelInfo(oFormKey);
 
                     oForm.SetFormKey(oFormKey + newLevel);
-                    var data = numberingData[modelInfo.modelName];
-                    if (data) {
-                        fillForm(oForm, data[newLevel]?.[modelInfo.modelKey]);
-                    }
+                    var data = getData(oFormKey, newLevel);
+                    fillForm(oForm, data);
                 }
             }
             oDocument.AddElement(nPos + 1, oNewParagraph);
@@ -148,14 +176,11 @@ function fillTable(oTable) {
                             //fill the first element and count the number of required rows
                             var oForm = oParagraphElement;
                             var oFormKey = oForm.GetFormKey();
-                            var modelInfo = getModelInfo(oFormKey);
 
-                            var records = getFormDataByModel(modelInfo.modelName);
-                            if (records && records.length) {
-                                tableData[modelInfo.modelName] = records;
-                                requiredRows = Math.max(requiredRows, records.length);
-                            }
-                            fillForm(oForm, records[0]?.[modelInfo.modelKey]);
+                            var data = getData(oFormKey, 0);
+                            var length = getDataArrayLength(oFormKey)
+                            requiredRows = Math.max(requiredRows, length);
+                            fillForm(oForm, data);
                         }
                     }
                 }
@@ -189,13 +214,9 @@ function fillTable(oTable) {
                                 if (oNewParagraphElement.GetClassType() === "form") {
                                     var oForm = oNewParagraphElement;
                                     var oFormKey = oForm.GetFormKey();
-                                    var modelInfo = getModelInfo(oForm.GetFormKey());
 
-                                    oForm.SetFormKey(oFormKey + newRow);
-                                    var data = tableData[modelInfo.modelName];
-                                    if (data) {
-                                        fillForm(oForm, data[newRow]?.[modelInfo.modelKey]);
-                                    }
+                                    var data = getData(oFormKey, newRow);
+                                    fillForm(oForm, data);
                                 }
                             }
                             oNewCell.AddElement(i, oNewCellElement);
@@ -229,7 +250,7 @@ function fillForm(oForm, data = null) {
 
         if (data === null) {
             var oFormKey = oForm.GetFormKey();
-            data = non_array_values[oFormKey];
+            data = getData(oFormKey);
             fillTextForm(data);
         } else {
             fillTextForm(data);
@@ -252,7 +273,7 @@ function fillForm(oForm, data = null) {
 
         if (data === null) {
             var oFormKey = oForm.GetFormKey()
-            var data = non_array_values[oFormKey];
+            var data = getData(oFormKey);
             fillCheckBoxForm(data);
         } else {
             fillCheckBoxForm(data);

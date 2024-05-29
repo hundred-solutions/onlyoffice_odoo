@@ -14,7 +14,7 @@
 
     'depends': ['base', 'onlyoffice_odoo'],
 
-    "external_dependencies": {"python": ["pyjwt"]},
+    "external_dependencies": {"python": ["pyjwt", "python-docx"]},
 
     # always loaded
     'data': [

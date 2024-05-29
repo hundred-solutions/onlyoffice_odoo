@@ -43,9 +43,8 @@
                             </div>
                         </div>
                         <div class="o-onlyoffice-body-models">
-                            <t t-foreach="state.visibleModels" t-as="model" t-key="model.name">
-                                <t t-component="EditorComponent" model="model" searchString="state.searchString" level="0"/>
-                                <hr/>
+                            <t t-if="state.models">
+                                <EditorComponent model="state.models" searchString="state.searchString" level="0"/>
                             </t>
                         </div>
                     </div>

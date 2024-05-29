@@ -98,7 +98,7 @@ export class TemplateDialog extends Component{
         const templateId = this.state.selectedTemplateId;
         const { resId, resModel } = this.props.formControllerProps;
         
-        const response = await this.rpc("/onlyoffice/template/fill", {
+        const response = await this.rpc("/onlyoffice/template/get_filled_template", {
             template_id: templateId,
             record_id: resId,
             model_name: resModel,

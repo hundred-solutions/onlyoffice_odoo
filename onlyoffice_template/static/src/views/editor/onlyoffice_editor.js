@@ -17,8 +17,8 @@ class TemplateEditor extends Component {
         this.state = useState({
             docApiJS: null,
             config: null,
-            models: [],
-            visibleModels: [],
+            models: {},
+            visibleModels: {},
             searchString: "",
         });
 
@@ -27,8 +27,9 @@ class TemplateEditor extends Component {
         onMounted(async () => {
             try {
                 const models = JSON.parse(await this.orm.call("onlyoffice.template", "get_fields_for_model", [this.props.template_model_model]));
+
+                // Add keys
                 this.state.models = this.formatModels(models);
-                this.state.visibleModels = this.state.models;
 
                 const response = await this.rpc(`/onlyoffice/template/editor`, {
                     attachment_id: this.props.attachment_id[0]
@@ -97,46 +98,16 @@ class TemplateEditor extends Component {
         });
     }
 
-    formatModels(models) {
-        function createNestedObject(base, names, value) {
-            let currentStep = base;
-            names.forEach((name, index) => {
-                let existingChild = currentStep.children.find(child => child.name === name);
-                if (!existingChild) {
-                    existingChild = { name, children: [] };
-                    currentStep.children.push(existingChild);
-                }
-                currentStep = existingChild;
-    
-                if (index === names.length - 1) {
-                    existingChild.fields = value.fields;
-                    existingChild.fullname = value.fullname;
-                }
-            });
-        }
-    
-        function buildHierarchy(objects) {
-            let root = { children: [] };
-            objects.forEach(obj => {
-                let parts = obj.name.split(".");
-                createNestedObject(root, parts, obj);
-            });
-            return root.children;
-        }
-    
-        function simplifyStructure(hierarchy) {
-            return hierarchy.map(node => {
-                if (node.children.length === 0) {
-                    delete node.children;
-                } else {
-                    node.children = simplifyStructure(node.children);
-                }
-                return node;
-            });
-        }
-    
-        let hierarchy = buildHierarchy(models);
-        return simplifyStructure(hierarchy);
+    formatModels(models, parentNames = []) {
+        models.fields = models.fields.map(field => {
+            const key = [...parentNames, field.name].join(' ');
+            field.key = key;
+            if (field.related_model) {
+                field.related_model = this.formatModels(field.related_model, [...parentNames, field.name]);
+            }
+            return field;
+        });
+        return models;
     }
 
     setModelsFilter() {
@@ -164,11 +135,13 @@ class TemplateEditor extends Component {
     }
 
     onCleanSearchClick() {
+        return
         this.state.searchString = "";
         this.state.visibleModels = this.state.models;
     }
 
     onSearchInput() {
+        return
         if (this.state.searchString) {
             this.setModelsFilter();
         } else {
@@ -204,7 +177,7 @@ class TemplateEditor extends Component {
         window.connector.callCommand(() => {
             var oDocument = Api.GetDocument();
             var oTextForm = Api.CreateTextForm({
-                "key": Asc.scope.data.name,
+                "key": Asc.scope.data.key,
                 "placeholder": Asc.scope.data.string,
                 "tip": Asc.scope.data.string,
                 "tag": Asc.scope.data.model
@@ -221,7 +194,7 @@ class TemplateEditor extends Component {
         window.connector.callCommand(() => {
             var oDocument = Api.GetDocument();
             var oCheckBoxForm = Api.CreateCheckBoxForm({
-                "key": Asc.scope.data.name,
+                "key": Asc.scope.data.key,
                 "tip": Asc.scope.data.string,
                 "tag": Asc.scope.data.model
             });
