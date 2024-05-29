@@ -1,95 +1,94 @@
 .o-onlyoffice-template {
-    display: flex;
+  display: flex;
 
-    .o-onlyoffice-template-panel {
-        width: 260px;
-        max-width: 260px;
-        height: 100%;
-        flex-shrink: 0;
-        font-size: 11px;
-        background-color: #F7F7F7;
-        border-right: 2px #C0C0C0 solid;
-        
-        hr {
-            flex-shrink: 0;
-            width: 100%;
-            height: 2px;
-            margin: 0;
-            color: #C0C0C0;
-        }
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
 
-        .o-onlyoffice-panel-header {
-            display: flex;
-            height: 54px;
-            align-items: center;
-            padding: 10px;
+  .o-onlyoffice-template-panel {
+    width: 260px;
+    max-width: 260px;
+    height: 100%;
+    flex-shrink: 0;
+    font-size: 11px;
+    background-color: #f7f7f7;
+    border-right: 2px #c0c0c0 solid;
 
-            span {
-                font-weight: bold;
-            }
-        }
+    .o-onlyoffice-panel-header {
+      display: flex;
+      height: 54px;
+      padding: 10px;
+      align-items: center;
 
-        .o-onlyoffice-panel-body {
-            display: flex;
-            height: calc(100% - 56px);
-            flex-direction: column;
-            padding: 10px;
-            row-gap: 10px;
-
-            .o-onlyoffice-body-title {
-
-                span {
-                }
-            }
-            
-            .o-onlyoffice-body-search {
-                display: flex;
-                flex-direction: column;
-                row-gap: 10px;
-                
-                .o-onlyoffice-search-title {
-                    span {
-                        font-weight: bold;
-                        text-transform: capitalize;
-                    }
-                }
-
-                .o-onlyoffice-search-field {
-                    position: relative;
-
-                    input {
-                        height: 24px;
-                    }
-
-                    button {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        border: none;
-                        height: 100%;
-                        background-color: transparent;
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
-            }
-
-            .o-onlyoffice-body-models {
-                display: flex;
-                flex-direction: column;
-                padding-right: 4px;
-                row-gap: 5px;
-                overflow-y: auto;
-                overflow-x: hidden;
-            }
-        }
+      span {
+        font-weight: bold;
+      }
     }
 
-    iframe {
-        width: 100%;
-        height: 100%;
+    hr {
+      width: 100%;
+      height: 2px;
+      margin: 0;
+      flex-shrink: 0;
+      color: #c0c0c0;
     }
+
+    .o-onlyoffice-panel-body {
+      display: flex;
+      height: calc(100% - 56px);
+      flex-direction: column;
+      row-gap: 10px;
+      padding: 10px;
+
+      .o-onlyoffice-body-title {
+        span {
+        }
+      }
+
+      .o-onlyoffice-body-search {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .o-onlyoffice-search-title {
+          span {
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+        }
+
+        .o-onlyoffice-search-field {
+          position: relative;
+
+          input {
+            height: 24px;
+          }
+
+          button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: none;
+            height: 100%;
+            background-color: transparent;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+
+      .o-onlyoffice-body-models {
+        display: flex;
+        flex-direction: column;
+        padding-right: 4px;
+        row-gap: 5px;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.addons.onlyoffice_odoo.utils import file_utils
 
+
 class OnlyOfficeTemplate(models.Model):
     _name = "onlyoffice.template"
     _description = "ONLYOFFICE Template"
@@ -36,14 +37,16 @@ class OnlyOfficeTemplate(models.Model):
         datas = vals.pop("file", None)
         record = super(OnlyOfficeTemplate, self).create(vals)
         if datas:
-            attachment = self.env["ir.attachment"].create({
-                "name": vals.get("name", record.name) + ".docxf",
-                "display_name": vals.get("name", record.name),
-                "mimetype": vals.get("mimetype", ""),
-                "datas": datas,
-                "res_model": self._name,
-                "res_id": record.id,
-            })
+            attachment = self.env["ir.attachment"].create(
+                {
+                    "name": vals.get("name", record.name) + ".docxf",
+                    "display_name": vals.get("name", record.name),
+                    "mimetype": vals.get("mimetype", ""),
+                    "datas": datas,
+                    "res_model": self._name,
+                    "res_id": record.id,
+                }
+            )
             record.attachment_id = attachment.id
         return record
 
@@ -56,7 +59,7 @@ class OnlyOfficeTemplate(models.Model):
             if model_name in processed_models:
                 return
             processed_models.add(model_name)
-            
+
             description = self.env["ir.model"].search_read([["model", "=", model_name]], ["name"])
             fields = self.env[model_name].fields_get()
 
@@ -64,8 +67,8 @@ class OnlyOfficeTemplate(models.Model):
             for field_name, field_props in fields.items():
                 field_type = field_props["type"]
                 if field_type in ["html", "binary", "json"]:
-                    continue #TODO:
-                
+                    continue  # TODO:
+
                 field_dict = {
                     "name": field_name,
                     "string": field_props.get("string", ""),
@@ -83,14 +86,18 @@ class OnlyOfficeTemplate(models.Model):
                             related_fields = self.env[related_model].fields_get()
 
                             related_field_list = []
-                            for related_field_name, related_field_props in related_fields.items():
+                            for (related_field_name, related_field_props) in related_fields.items():
                                 related_field_dict = {
                                     "name": related_field_name,
                                     "string": related_field_props.get("string", ""),
                                     "type": related_field_props["type"],
                                 }
                                 related_field_list.append(related_field_dict)
-                            related_model_info = {"name": field_name, "description": related_description[0]["name"], "fields": related_field_list}
+                            related_model_info = {
+                                "name": field_name,
+                                "description": related_description[0]["name"],
+                                "fields": related_field_list,
+                            }
                             field_dict["related_model"] = related_model_info
                             cached_models[related_model] = related_model_info
                         else:
@@ -98,10 +105,14 @@ class OnlyOfficeTemplate(models.Model):
                             if processed_model:
                                 field_dict["related_model"] = processed_model
                                 cached_models[related_model] = processed_model
-                
+
                 field_list.append(field_dict)
-            
-            model_info = {"name": model_name, "description": description[0]["name"], "fields": field_list}
+
+            model_info = {
+                "name": model_name,
+                "description": description[0]["name"],
+                "fields": field_list,
+            }
 
             processed_models.discard(model_name)
             return model_info

@@ -4,26 +4,26 @@ import { KanbanRenderer } from "@web/views/kanban/kanban_renderer";
 import { OnlyofficeKanbanRecord } from "./onlyoffice_kanban_record";
 
 export class OnlyofficeKanbanRenderer extends KanbanRenderer {
-    setup() {
-        super.setup();
-    }
+  setup() {
+    super.setup();
+  }
 
-    /**
-     * @override
-     **/
-    canQuickCreate() {
-        return false
-    }
+  /**
+   * @override
+   **/
+  canQuickCreate() {
+    return false;
+  }
 
-    /**
-     * @override
-     **/
-    canCreateGroup() {
-        return false
-    }
+  /**
+   * @override
+   **/
+  canCreateGroup() {
+    return false;
+  }
 }
 
 OnlyofficeKanbanRenderer.components = {
-    ...KanbanRenderer.components, 
-    KanbanRecord: OnlyofficeKanbanRecord
+  ...KanbanRenderer.components,
+  KanbanRecord: OnlyofficeKanbanRecord,
 };

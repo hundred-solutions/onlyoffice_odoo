@@ -1,81 +1,79 @@
 .o-onlyoffice-models-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+
+  hr {
+    height: 1.5px;
+  }
+
+  .o-onlyoffice-model {
+    .o-onlyoffice-model-button {
+      padding: 0;
+      width: 100%;
+      height: 28px;
+      text-align: start;
+      border: none;
+      background-color: inherit;
+      position: relative;
+      padding-left: 20px;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+
+    .o-onlyoffice-model-button:hover {
+      background-color: #cbcbcb;
+    }
+
+    .o-onlyoffice-model-button::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-image: url("/onlyoffice_template/static/svg/onlyoffice_dropdown.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 6px 6px;
+      top: 4px;
+    }
+
+    .o-onlyoffice-model-button_open {
+      background-color: #cbcbcb;
+    }
+
+    .o-onlyoffice-model-button_open::before {
+      transform: rotate(90deg);
+    }
+  }
+
+  .o-onlyoffice-fields-list {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
-    
-    hr {
-        height: 1.5px;
-    }
+  }
 
-    .o-onlyoffice-model {
+  .o-onlyoffice-field {
+    padding: 5px 10px;
+    border: 1px #c0c0c0 solid;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+  }
 
-        .o-onlyoffice-model-button {
-            padding: 0;
-            width: 100%;
-            height: 28px;
-            text-align: start;
-            border: none;
-            background-color: inherit;
-            position: relative;
-            padding-left: 20px;
-            font-weight: bold;
-            text-transform: capitalize;
-        }
+  .o-onlyoffice-field:hover {
+    background-color: #e0e0e0;
+  }
 
-        .o-onlyoffice-model-button:hover {
-            background-color: #CBCBCB;
-        }
-
-        .o-onlyoffice-model-button::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-image: url("/onlyoffice_template/static/svg/onlyoffice_dropdown.svg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: 6px 6px;
-            top: 4px;
-            
-        }
-
-        .o-onlyoffice-model-button_open {
-            background-color: #CBCBCB;
-        }
-
-        .o-onlyoffice-model-button_open::before {
-            transform: rotate(90deg);
-        }
-    }
-
-    .o-onlyoffice-fields-list {
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-    }
-
-    .o-onlyoffice-field {
-        padding: 5px 10px;
-        border: 1px #C0C0C0 solid;
-        text-align: center;
-        font-weight: bold;
-        background-color: white;
-        cursor: pointer;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        text-wrap: nowrap;
-    }
-
-    .o-onlyoffice-field:hover {
-        background-color: #E0E0E0;
-    }
-
-    .o-onlyoffice-field:active {
-        background-color: #CBCBCB;
-    }
+  .o-onlyoffice-field:active {
+    background-color: #cbcbcb;
+  }
 }
 
 .o-onlyoffice-models-list_open + .o-onlyoffice-field {
-    margin-top: 20px;
+  margin-top: 20px;
 }
