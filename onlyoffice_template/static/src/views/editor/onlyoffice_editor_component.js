@@ -4,11 +4,11 @@ import { Component, useState, onWillUpdateProps } from "@odoo/owl";
 export class EditorComponent extends Component {
   setup() {
     this.state = useState({
-      isExpanded: Boolean(this.props.searchString) || false,
+      isExpanded: false//Boolean(this.props.searchString) || false,
     });
-    onWillUpdateProps((nextProps) => {
+    /*onWillUpdateProps((nextProps) => {
       this.state.isExpanded = Boolean(nextProps.searchString);
-    });
+    });*/
   }
   toggleExpand() {
     this.state.isExpanded = !this.state.isExpanded;

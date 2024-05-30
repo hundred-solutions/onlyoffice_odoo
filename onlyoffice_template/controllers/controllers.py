@@ -286,10 +286,13 @@ class OnlyofficeTemplate_Connector(http.Controller):
                             continue  # TODO
                         elif field_type == "boolean":
                             result[field] = str(data).lower()
+                        elif isinstance(data, tuple):
+                            result[field] = str(data[1])
                         elif data:
                             if field_type in ["float", "integer", "char", "text"]:
                                 result[field] = str(data)
                             elif field_type == "monetary":
+                                data = "{:,.2f}".format(float(data))
                                 currency_field_name = record._fields[field].currency_field
                                 if currency_field_name:
                                     currency = getattr(record, currency_field_name).name

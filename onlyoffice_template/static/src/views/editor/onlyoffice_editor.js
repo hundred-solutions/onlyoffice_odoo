@@ -18,7 +18,7 @@ class TemplateEditor extends Component {
       docApiJS: null,
       config: null,
       models: {},
-      visibleModels: {},
+      unchangedModels: {},
       searchString: "",
     });
 
@@ -31,7 +31,9 @@ class TemplateEditor extends Component {
         );
 
         // Add keys
-        this.state.models = this.formatModels(models);
+        const formattedModels = this.formatModels(models);
+        this.state.models = formattedModels;
+        this.state.unchangedModels = formattedModels;
 
         const response = await this.rpc(`/onlyoffice/template/editor`, {
           attachment_id: this.props.attachment_id[0],
@@ -108,44 +110,41 @@ class TemplateEditor extends Component {
         field.related_model = this.formatModels(field.related_model, [...parentNames, field.name]);
       }
       return field;
-    });
+    }).sort((a, b) => (a.key > b.key ? 1 : -1));
     return models;
   }
 
   setModelsFilter() {
-    const searchAndExpand = (items) => {
-      return items.reduce((acc, item) => {
-        const fields = item.fields || [];
-        const matchingFields = fields.filter((field) =>
-          field.string.toLowerCase().includes(this.state.searchString.toLowerCase()),
-        );
-        const matchInFields = matchingFields.length > 0;
-
-        let children = item.children ? searchAndExpand(item.children) : [];
-        const matchInChildren = children.length > 0;
-
-        if (matchInFields || matchInChildren) {
-          acc.push({
-            ...item,
-            expanded: matchInFields || matchInChildren,
-            fields: matchingFields,
-            children,
-          });
+    const searchAndExpand = (models) => {
+      const filteredFields = models.fields.filter(field => {
+        if (field.key.split(' ').pop().includes(this.state.searchString)) {
+          return true;
+        } else if (field.related_model) {
+          field.related_model = searchAndExpand(field.related_model, this.state.searchString);
+          return field.related_model !== null;
         }
-        return acc;
-      }, []);
-    };
-    this.state.visibleModels = searchAndExpand(this.state.models);
+        return false;
+      });
+    
+      if (filteredFields.length === 0) {
+        return null;
+      }
+    
+      return {
+        ...models,
+        fields: filteredFields
+      };
+    }
+    const unchangedModels = structuredClone(this.state.unchangedModels);
+    this.state.models = searchAndExpand(unchangedModels);
   }
 
   onCleanSearchClick() {
-    return;
     this.state.searchString = "";
-    this.state.visibleModels = this.state.models;
+    this.state.models = this.state.unchangedModels;
   }
 
   onSearchInput() {
-    return;
     if (this.state.searchString) {
       this.setModelsFilter();
     } else {

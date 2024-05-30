@@ -157,7 +157,7 @@ function fillTable(oTable) {
             var oCell = oTable.GetCell(row, col);
             var oCellContent = oCell.GetContent();
 
-            //enum of paragraphs inside the cell
+            // Enum of paragraphs inside the cell
             var oCellElementsCount = oCellContent.GetElementsCount();
             for (var cellElement = 0; cellElement < oCellElementsCount; cellElement++) {
                 var oCellElement = oCellContent.GetElement(cellElement);
@@ -165,7 +165,7 @@ function fillTable(oTable) {
                 if (oCellElement.GetClassType() !== "paragraph") {
                     fillElementByType(oCellElement)
                 } else {
-                    //enum paragraph elements inside a cell
+                    // Enum paragraph elements inside a cell
                     var oParagraphElementsCount = oCellElement.GetElementsCount();
                     for (var paragraphElement = 0; paragraphElement < oParagraphElementsCount; paragraphElement++) {
                         var oParagraphElement = oCellElement.GetElement(paragraphElement);
@@ -173,7 +173,7 @@ function fillTable(oTable) {
                         if (oParagraphElement.GetClassType() !== "form") {
                             fillElementByType(oParagraphElement)
                         } else {
-                            //fill the first element and count the number of required rows
+                            // Fill the first element and count the number of required rows
                             var oForm = oParagraphElement;
                             var oFormKey = oForm.GetFormKey();
 
@@ -267,7 +267,7 @@ function fillForm(oForm, data = null) {
                 data = JSON.parse(data);
                 oForm.SetChecked(data);
             } catch (_e) {
-                //TODO: set checked BoxForm in case of error
+                // TODO: set checked BoxForm in case of error
             }
         }
 
