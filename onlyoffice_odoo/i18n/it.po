@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0-20221116\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 10:14+0000\n"
-"PO-Revision-Date: 2023-02-16 10:57+0300\n"
+"POT-Creation-Date: 2024-07-03 08:14+0000\n"
+"PO-Revision-Date: 2024-07-03 16:32+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -15,12 +15,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">Document Editing Service address for internal "
+"requests from the server</span>"
+msgstr ""
+"<span class=\"o_form_label\">Indirizzo del servizio di modifica dei "
+"documenti per richieste interne del server</span>"
 
 #. module: onlyoffice_odoo
 #: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Document Server JWT Header</span>"
-msgstr "<span class=\"o_form_label\">Intestazione JWT del Document Server</span>"
+msgstr ""
+"<span class=\"o_form_label\">Intestazione JWT del Document Server</span>"
 
 #. module: onlyoffice_odoo
 #: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
@@ -33,9 +43,29 @@ msgid "<span class=\"o_form_label\">Document Server Url</span>"
 msgstr "<span class=\"o_form_label\">URL del Document Server</span>"
 
 #. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">Server address for internal requests from the "
+"Document Editing Service</span>"
+msgstr ""
+"<span class=\"o_form_label\">Indirizzo del server per richieste interne dal "
+"Servizio di modifica dei documenti</span>"
+
+#. module: onlyoffice_odoo
 #: model:ir.model,name:onlyoffice_odoo.model_res_config_settings
 msgid "Config Settings"
 msgstr "Impostazioni di configurazione"
+
+#. module: onlyoffice_odoo
+#: model:ir.model.fields,field_description:onlyoffice_odoo.field_res_config_settings__doc_server_demo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid "Connect to demo ONLYOFFICE Docs server"
+msgstr "Connessione al server demo ONLYOFFICE Docs"
+
+#. module: onlyoffice_odoo
+#: model:ir.model.fields,field_description:onlyoffice_odoo.field_res_config_settings__doc_server_inner_url
+msgid "Document Server Inner URL"
+msgstr "URL interno del server dei documenti"
 
 #. module: onlyoffice_odoo
 #: model:ir.model.fields,field_description:onlyoffice_odoo.field_res_config_settings__doc_server_jwt_header
@@ -49,8 +79,13 @@ msgstr "Segreto JWT del Document Server"
 
 #. module: onlyoffice_odoo
 #: model:ir.model.fields,field_description:onlyoffice_odoo.field_res_config_settings__doc_server_public_url
-msgid "Document Server URL"
-msgstr "URL del Document Server"
+msgid "Document Server Public URL"
+msgstr "URL pubblico del server dei documenti"
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid "GET NOW"
+msgstr "OTTIENI ORA"
 
 #. module: onlyoffice_odoo
 #: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
@@ -69,10 +104,38 @@ msgstr "ONLYOFFICE"
 
 #. module: onlyoffice_odoo
 #. odoo-javascript
+#: code:addons/onlyoffice_odoo/static/src/models/attachment_onlyoffice.js:0
+#, python-format
+msgid "ONLYOFFICE Docs server"
+msgstr "Server ONLYOFFICE Docs"
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.onlyoffice_editor
+msgid "ONLYOFFICE cannot be reached. Please contact admin."
+msgstr ""
+"ONLYOFFICE non può essere raggiunto. Si prega di contattare l'amministratore."
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.onlyoffice_editor
+msgid "ONLYOFFICE logo"
+msgstr "Logo di ONLYOFFICE"
+
+#. module: onlyoffice_odoo
+#: model:ir.model.fields,field_description:onlyoffice_odoo.field_res_config_settings__doc_server_odoo_url
+msgid "Odoo URL"
+msgstr "URL di Odoo"
+
+#. module: onlyoffice_odoo
+#. odoo-javascript
 #: code:addons/onlyoffice_odoo/static/src/components/attachment_card_onlyoffice/attachment_card_onlyoffice.xml:0
 #, python-format
 msgid "Open in ONLYOFFICE"
 msgstr "Aprire in ONLYOFFICE"
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid "Other"
+msgstr "Altro"
 
 #. module: onlyoffice_odoo
 #: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
@@ -83,3 +146,23 @@ msgstr "Sicurezza"
 #: model:ir.actions.act_window,name:onlyoffice_odoo.action_onlyoffice_config_settings
 msgid "Settings"
 msgstr "Impostazioni"
+
+#. module: onlyoffice_odoo
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo/static/src/models/attachment_onlyoffice.js:0
+#, python-format
+msgid ""
+"The 30-day test period is over, you can no longer connect to demo ONLYOFFICE "
+"Docs server"
+msgstr ""
+"Il periodo di prova di 30 giorni è terminato, non puoi più connetterti alla "
+"demo ONLYOFFICE Docs Server"
+
+#. module: onlyoffice_odoo
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo.res_config_settings_view_form
+msgid ""
+"This is a public test server, please do not use it for private sensitive "
+"data. The server will be available during a 30-day period."
+msgstr ""
+"Questo è un server di test pubblico, si prega di non usarlo per dati privati "
+"e sensibili. Il server sarà disponibile per un periodo di 30 giorni."

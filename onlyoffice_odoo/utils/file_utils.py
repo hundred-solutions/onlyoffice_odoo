@@ -61,7 +61,7 @@ def get_default_ext_by_type(str):
     if str == "slide":
         return "pptx"
     if str == "form":
-        return "docxf"
+        return "pdf"
 
     return None
 
@@ -74,7 +74,7 @@ def get_default_name_by_type(str):
     if str == "slide":
         return "Presentation"
     if str == "form":
-        return "Form template"
+        return "PDF form"
 
     return None
 
@@ -85,6 +85,8 @@ def get_mime_by_ext(str):
         return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     if str == "pptx":
         return "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    if str == "pdf":
+        return "application/pdf"
 
     return None
 

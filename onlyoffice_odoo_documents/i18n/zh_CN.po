@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0-20221116\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-14 10:14+0000\n"
-"PO-Revision-Date: 2023-07-10 17:11+0300\n"
+"POT-Creation-Date: 2024-07-03 08:20+0000\n"
+"PO-Revision-Date: 2024-07-03 17:30+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. module: onlyoffice_odoo_documents
 #. odoo-javascript
@@ -69,6 +69,13 @@ msgstr "在“文档”中新建的文档"
 
 #. module: onlyoffice_odoo_documents
 #. odoo-javascript
+#: code:addons/onlyoffice_odoo_documents/static/src/models/documents_inspector_onlyoffice.js:0
+#, python-format
+msgid "ONLYOFFICE Docs server"
+msgstr "ONLYOFFICE 文档服务器"
+
+#. module: onlyoffice_odoo_documents
+#. odoo-javascript
 #: code:addons/onlyoffice_odoo_documents/static/src/components/documents_inspector_onlyoffice/documents_inspector_onlyoffice.xml:0
 #, python-format
 msgid "Open in ONLYOFFICE"
@@ -87,6 +94,15 @@ msgstr "演示文稿"
 #, python-format
 msgid "Spreadsheet"
 msgstr "电子表格"
+
+#. module: onlyoffice_odoo_documents
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_documents/static/src/models/documents_inspector_onlyoffice.js:0
+#, python-format
+msgid ""
+"The 30-day test period is over, you can no longer connect to demo ONLYOFFICE "
+"Docs server"
+msgstr "30 天测试期结束后，您将无法再访问 ONLYOFFICE文档服务器演示版"
 
 #. module: onlyoffice_odoo_documents
 #. odoo-javascript

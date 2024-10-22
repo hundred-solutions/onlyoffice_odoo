@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.0.0
+## Added
+- advanced server settings for specifying internal addresses
+- validation of server settings on the settings page
+- trial period of 30 days for the demo server
+- link to docs cloud
+
+## Changed
+- replace docxf with pdf as a form template
+
 ## 2.1.0
 ## Added
 - compatible with Odoo 17
@@ -7,8 +17,6 @@
 ## 2.0.0
 ## Added
 - support Documents module
-- opening file from Documents module
-- creating file in Document module
 
 ## 1.0.0
 ## Added

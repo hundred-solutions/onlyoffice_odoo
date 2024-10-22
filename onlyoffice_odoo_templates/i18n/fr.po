@@ -1,0 +1,317 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* onlyoffice_odoo_templates
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20240216\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-03 08:20+0000\n"
+"PO-Revision-Date: 2024-07-03 17:38+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: onlyoffice_odoo_templates
+#: model:res.groups,name:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin
+msgid "Administrator"
+msgstr "Administrateur"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/kanban/onlyoffice_kanban_record.js:0
+#, python-format
+msgid "Are you sure you want to delete this record?"
+msgstr "Souhaitez-vous vraiment supprimer cet enregistrement ?"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__attachment_id
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+#. module: onlyoffice_odoo_templates
+#: model:res.groups,comment:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user
+msgid "Can open ONLYOFFICE templates for viewing and print them."
+msgstr "Peut ouvrir des modèles ONLYOFFICE pour les afficher et les imprimer."
+
+#. module: onlyoffice_odoo_templates
+#: model:res.groups,comment:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_admin
+msgid "Can open, create, edit and print ONLYOFFICE templates."
+msgstr "Peut ouvrir, créer, éditer et imprimer des modèles ONLYOFFICE."
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.xml:0
+#, python-format
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "Choose the field below to paste selected parameter to the cursor"
+msgstr ""
+"Sélectionnez la zone ci-dessous pour coller le paramètre sélectionné au "
+"curseur"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.js:0
+#, python-format
+msgid "Couldn't insert the field. Please check Automation API."
+msgstr ""
+"Impossible d'insérer le champ. Veuillez vérifier l'API d'automatisation."
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/kanban/onlyoffice_kanban_controller.xml:0
+#, python-format
+msgid "Create or Upload"
+msgstr "Créer ou télécharger"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_form
+msgid "Create template"
+msgstr "Créer un modèle"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban
+msgid "Delete"
+msgstr "Supprimer"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__display_name
+msgid "Display Name"
+msgstr "Afficher le nom"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban
+msgid "Download"
+msgstr "Télécharger"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban
+msgid "Dropdown menu"
+msgstr "Menu déroulant"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban
+msgid "Edit"
+msgstr "Modifier"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "Fields"
+msgstr "Champs"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban_search
+msgid "Group By"
+msgstr "Groupe par"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__id
+msgid "ID"
+msgstr "ID"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/kanban/onlyoffice_kanban_record.js:0
+#, python-format
+msgid "Kanban: no action for type: "
+msgstr "Kanban : aucune action pour le type : "
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__mimetype
+msgid "Mimetype"
+msgstr "Mimetype"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__template_model_model
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_kanban_search
+msgid "Model"
+msgstr "Modèle"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__template_model_name
+msgid "Model Description"
+msgstr "Description du modèle"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_form
+msgid "Model for which the template is being created."
+msgstr "Modèle pour lequel le formulaire est créé."
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "Module/ section"
+msgstr "Module/ section"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.actions.act_window,name:onlyoffice_odoo_templates.action_onlyoffice_odoo_templates
+#: model:ir.model,name:onlyoffice_odoo_templates.model_onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_menu
+msgid "ONLYOFFICE Templates"
+msgstr "Modèles ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "ONLYOFFICE cannot be reached. Please contact admin."
+msgstr "ONLYOFFICE n'est pas joignable. Veuillez contacter l'administration."
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "ONLYOFFICE logo"
+msgstr "Logo ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.module.category,name:onlyoffice_odoo_templates.module_category_onlyoffice_odoo_templates
+msgid "ONLYOFFICE templates"
+msgstr "Modèles ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-python
+#: code:addons/onlyoffice_odoo_templates/models/onlyoffice_odoo_templates.py:0
+#, python-format
+msgid "Only PDF Form can be uploaded."
+msgstr "Seuls les formulaires PDF peuvent être téléchargés."
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.xml:0
+#, python-format
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.js:0
+#, python-format
+msgid "Print from template"
+msgstr "Imprimer à partir du modèle"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/form/onlyoffice_form_view.js:0
+#, python-format
+msgid "Print with ONLYOFFICE"
+msgstr "Imprimer avec ONLYOFFICE"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/editor/onlyoffice_editor.xml:0
+#, python-format
+msgid "Search field"
+msgstr "Champ de recherche"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__template_model_id
+msgid "Select Model"
+msgstr "Sélectionner un modèle"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_form
+msgid ""
+"Select an existing template. Leave the field blank to create a blank "
+"template."
+msgstr ""
+"Sélectionnez un modèle existant. Laissez le champ vide pour créer un « "
+"modèle » vierge."
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__name
+msgid "Template Name"
+msgstr "Nom du modèle"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_form
+msgid "Template creation"
+msgstr "Création du modèle"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/kanban/onlyoffice_kanban_record.js:0
+#, python-format
+msgid "Template removed"
+msgstr "Modèle supprimé"
+
+#. module: onlyoffice_odoo_templates
+#: model_terms:ir.ui.view,arch_db:onlyoffice_odoo_templates.view_onlyoffice_form
+msgid "Template uploading"
+msgstr "Chargement du modèle"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.js:0
+#, python-format
+msgid "Unknown error"
+msgstr "Erreur inconnue"
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.model.fields,field_description:onlyoffice_odoo_templates.field_onlyoffice_odoo_templates__file
+msgid "Upload an existing template"
+msgstr "Charger un modèle existant"
+
+#. module: onlyoffice_odoo_templates
+#: model:res.groups,name:onlyoffice_odoo_templates.group_onlyoffice_odoo_templates_user
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: onlyoffice_odoo_templates
+#. odoo-javascript
+#: code:addons/onlyoffice_odoo_templates/static/src/views/dialog/onlyoffice_dialog.js:0
+#, python-format
+msgid ""
+"You don't have any templates yet. Please go to the ONLYOFFICE Templates app "
+"to create a new template or ask your admin to create it."
+msgstr ""
+"Vous n'avez pas encore de modèles. Veuillez vous rendre sur l'application "
+"ONLYOFFICE Templates pour créer un nouveau modèle ou demander à votre "
+"administrateur de le faire."
+
+#. module: onlyoffice_odoo_templates
+#: model:ir.ui.menu,name:onlyoffice_odoo_templates.onlyoffice_submenu
+msgid "Templates"
+msgstr "Modèles"
+
+#~ msgid "ONLYOFFICE Template"
+#~ msgstr "Modèle ONLYOFFICE"

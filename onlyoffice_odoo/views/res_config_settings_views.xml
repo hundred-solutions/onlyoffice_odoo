@@ -12,18 +12,40 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
+                <link type="text/css" rel="stylesheet" href="onlyoffice_odoo/static/src/css/res_config_settings_views.css"/>
                 <app data-string="ONLYOFFICE" string="ONLYOFFICE" name="onlyoffice_odoo" groups="base.group_system">
                     <block title="General Settings" name="onlyoffice_odoo">
                         <setting string="Document Server Url">
                             <field name="doc_server_public_url"/>
                         </setting>
+                        <setting string="Server address for internal requests from the Document Editing Service">
+                            <field name="doc_server_odoo_url"/>
+                        </setting>
+                        <setting string="Document Editing Service address for internal requests from the server">
+                            <field name="doc_server_inner_url"/>
+                        </setting>
                     </block>
                     <block title="Security" name="onlyoffice_odoo">
                         <setting string="Document Server JWT Secret">
-                            <field name="doc_server_jwt_secret"/>
+                            <field name="doc_server_jwt_secret" password="True"/>
                         </setting>
                         <setting string="Document Server JWT Header">
                             <field name="doc_server_jwt_header"/>
+                        </setting>
+                    </block>
+                    <block title="Other" name="onlyoffice_odoo">
+                        <setting string="Connect to demo ONLYOFFICE Docs server">
+                            <field name="doc_server_demo"/>
+                            <div class="text-muted">
+                                This is a public test server, please do not use it for private sensitive data. The server will be available during a 30-day period.
+                            </div>
+                        </setting>
+                        <setting>
+                            <div class="onlyoffice_link_container">
+                                <a class="onlyoffice_link_button" href="https://www.onlyoffice.com/docs-registration.aspx" target="_blank">
+                                    GET NOW
+                                </a>
+                            </div>
                         </setting>
                     </block>
                 </app>

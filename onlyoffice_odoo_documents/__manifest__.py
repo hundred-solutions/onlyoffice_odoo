@@ -10,7 +10,7 @@
     'website': "https://www.onlyoffice.com",
 
     'category': 'Productivity',
-    'version': '2.1.0',
+    'version': '4.0.1',
 
     'depends': ['onlyoffice_odoo', 'documents'],
 
